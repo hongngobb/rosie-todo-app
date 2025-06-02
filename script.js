@@ -126,7 +126,7 @@ function renderTasks() {
             
             <div class="task-actions">
                 ${task.completed 
-                    ? `<button class="task-btn uncomplete-btn" onclick="toggleTask(${task.id})">↩️ Mark Incomplete</button>`
+                    ? `<button class="task-btn uncomplete-btn" onclick="toggleTask(${task.id})">Mark Incomplete</button>`
                     : `<button class="task-btn complete-btn" onclick="toggleTask(${task.id})">✅ Complete</button>`
                 }
                 <button class="task-btn delete-btn" onclick="deleteTask(${task.id})">🗑️ Delete</button>
@@ -253,18 +253,6 @@ function loadTasks() {
         tasks = JSON.parse(savedTasks);
     }
 }
-
-// Keyboard shortcuts
-document.addEventListener('keydown', function(e) {
-    // Ctrl + Enter to submit form
-    if (e.ctrlKey && e.key === 'Enter') {
-        const titleInput = document.getElementById('taskTitle');
-        if (document.activeElement === titleInput || 
-            document.activeElement === document.getElementById('taskDetails')) {
-            taskForm.dispatchEvent(new Event('submit'));
-        }
-    }
-});
 
 // Smooth scroll for form when focused
 document.getElementById('taskTitle').addEventListener('focus', function() {
